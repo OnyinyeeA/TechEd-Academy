@@ -1,0 +1,39 @@
+project_id = "pssmsyiperoxsbqvoxcg"
+
+[storage]
+file_size_limit = "50MiB"
+
+[auth]
+site_url = "https://teched-academy-app.vercel.app"
+additional_redirect_urls = [
+  "https://teched-academy-app.vercel.app",
+  "https://teched-academy-app.vercel.app/auth/verify",
+  "https://teched-academy.vercel.app/auth/verify",
+  "http://localhost:5173",
+  "http://localhost:5173/auth/verify",
+  "http://127.0.0.1:5173/auth/verify"
+]
+
+[functions.create-checkout]
+verify_jwt = true
+
+[functions.verify-payment]
+verify_jwt = true
+
+[functions.paystack-webhook]
+verify_jwt = false
+
+[functions.request-withdrawal]
+verify_jwt = true
+
+[functions.admin-review]
+verify_jwt = true
+
+[functions.delete-account]
+verify_jwt = true
+
+[functions.set-payout-account]
+verify_jwt = true
+
+[functions.list-banks]
+verify_jwt = true
