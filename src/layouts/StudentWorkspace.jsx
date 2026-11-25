@@ -6,7 +6,7 @@ import AcademyLogo from '../components/AcademyLogo.jsx'
 import { presentCourse } from '../lib/coursePresentation.js'
 
 export default function StudentWorkspace() {
-	const { user, supabase, signOut } = useAuth()
+	const { user, supabase } = useAuth()
 	const [courses, setCourses] = useState([])
 	const [enrolledCourses, setEnrolledCourses] = useState([])
 	const [search, setSearch] = useState('')
@@ -124,15 +124,6 @@ export default function StudentWorkspace() {
 		}
 	}
 
-	async function logout() {
-		try {
-			await signOut()
-			navigate('/', { replace: true })
-		} catch {
-			setNotice('Unable to sign out right now. Please retry.')
-		}
-	}
-
 	return (
 		<div className="app-shell">
 			<aside className="sidebar">
@@ -156,7 +147,6 @@ export default function StudentWorkspace() {
 					<div className="crumb"><span>STUDENT</span><ChevronRight size={14} /><strong>{activePath === 'catalog' ? 'COURSE CATALOG' : activePath === 'learning' ? 'MY LEARNING' : 'OVERVIEW'}</strong></div>
 					<div className="topbar-actions">
 						<label className="global-search"><Search size={17} /><input aria-label="Search courses" placeholder="Search courses" value={search} onChange={(event) => { setSearch(event.target.value); if (event.target.value) navigate('/student/catalog') }} /></label>
-						<button className="button button-outline" onClick={logout}>Sign out</button>
 					</div>
 				</header>
 				<div className="page-content">

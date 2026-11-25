@@ -12,7 +12,7 @@ export default function StudentDashboard() {
 	const averageProgress = courses.length ? Math.round(courses.reduce((total, course) => total + course.progress, 0) / courses.length) : 0
 	const firstName = profile?.full_name?.trim().split(/\s+/)[0] || 'there'
 
-	return <>
+	return <div className="student-dashboard">
 		<section className="welcome-row">
 			<div>
 				<p className="eyebrow">YOUR LEARNING SPACE</p>
@@ -95,5 +95,5 @@ export default function StudentDashboard() {
 			<CourseGrid courses={recommendations} openCourse={openCourse} />
 		</section>
 		<AccountActions role="student" />
-	</>
+	</div>
 }
